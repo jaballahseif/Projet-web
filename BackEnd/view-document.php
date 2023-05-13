@@ -1,20 +1,16 @@
 <?php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 
-$dir = 'uploads/';
+$dir = './uploads';
 $files = scandir($dir);
-$file_list = [];
+$fileList = array();
 
 foreach ($files as $file) {
-  if ($file != '.' && $file != '..') {
-    $file_list[] = [
-      'name' => $file,
-      'url' => '/uploads/' . $file,
-      'type' => mime_content_type($dir . $file),
-      'size' => filesize($dir . $file)
-    ];
-  }
+    if ($file != '.' && $file != '..') {
+        $fileList[] = $file;
+    }
 }
 
-header('Content-Type: application/json');
-echo json_encode($file_list);
+echo json_encode($fileList);
 ?>

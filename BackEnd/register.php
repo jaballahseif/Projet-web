@@ -14,7 +14,7 @@ if(isset($postdata) && !empty($postdata))
     $role = mysqli_real_escape_string($mysqli, trim($request->role)); // new field
 
     // Check if email and password already exist
-    $sql = "SELECT * FROM $role WHERE email='$email' AND password='$pwd'";
+    $sql = "SELECT * FROM $role WHERE email='$email' AND role='$role'";
     $result = $mysqli->query($sql);
 
     if($result->num_rows > 0) {
